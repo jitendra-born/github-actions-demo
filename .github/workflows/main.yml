@@ -1,4 +1,4 @@
-name: System Information
+name: Secret Demo
 
 on:
   push:
@@ -6,25 +6,14 @@ on:
       - main
 
 jobs:
-  info:
+  secret-test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show System Information
+      - name: Read Secret
         run: |
-          echo "Hostname:"
-          hostname
-
-          echo "Current User:"
-          whoami
-
-          echo "Current Directory:"
-          pwd
-
-          echo "Disk Usage:"
-          df -h
-
-          echo "Memory:"
-          free -m
+          echo "Hello $MY_NAME"
+        env:
+          MY_NAME: ${{ secrets.MY_NAME }}
