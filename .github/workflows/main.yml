@@ -1,4 +1,4 @@
-name: My First Workflow
+name: System Information
 
 on:
   push:
@@ -6,12 +6,25 @@ on:
       - main
 
 jobs:
-  hello:
+  info:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Print Message
-        run: echo "Hello from GitHub Actions"
+      - name: Show System Information
+        run: |
+          echo "Hostname:"
+          hostname
+
+          echo "Current User:"
+          whoami
+
+          echo "Current Directory:"
+          pwd
+
+          echo "Disk Usage:"
+          df -h
+
+          echo "Memory:"
+          free -m
