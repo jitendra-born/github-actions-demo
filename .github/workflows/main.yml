@@ -1,4 +1,4 @@
-name: Secret Demo
+name: Variables Demo
 
 on:
   push:
@@ -6,14 +6,12 @@ on:
       - main
 
 jobs:
-  secret-test:
+  demo:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Read Secret
+      - name: Show Variable
         run: |
-          echo "Hello $MY_NAME"
+          echo "Environment is $ENVIRONMENT"
         env:
-          MY_NAME: ${{ secrets.MY_NAME }}
+          ENVIRONMENT: ${{ vars.ENVIRONMENT }}
